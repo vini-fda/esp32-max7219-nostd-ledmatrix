@@ -1,0 +1,22 @@
+[package]
+name = "esp32_max7219_nostd_ledmatrix"
+version = "0.1.0"
+authors = ["Vinicius <vinifreitas.d.a@gmail.com>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[dependencies]
+hal = { package = "esp32-hal", version = "0.10.0"}
+esp-backtrace = { version = "0.5.0", features = ["esp32", "panic-handler", "print-uart"] }
+esp-println       = { version = "0.3.1", features = ["esp32"] }
+esp-alloc = { version = "0.2.0", features = ["oom-handler"] }
+max7219 = "0.3.1"
+esp-max7219-nostd = { version = "0.1.0", git = "https://github.com/vini-fda/esp-max7219-nostd.git" }
